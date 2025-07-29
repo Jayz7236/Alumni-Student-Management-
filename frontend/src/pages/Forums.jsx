@@ -21,7 +21,7 @@ const Forums = () => {
   useEffect(() => {
     const fetchForums = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/forums");
+        const response = await axios.get("https://alumni-student-management.onrender.com/api/forums");
         const formatted = response.data.map((forum) => ({
           id: forum._id,
           topic: forum.title,
@@ -29,7 +29,7 @@ const Forums = () => {
           author: forum.created_by || "Unknown",
           avatar: forum.creator_avatar?.startsWith("http")
             ? forum.creator_avatar
-            : `http://localhost:5000${forum.creator_avatar}`,
+            : `https://alumni-student-management.onrender.com${forum.creator_avatar}`,
         }));
         console.log(formatted); // Add this to verify the avatar URLs
         setForums(formatted);
@@ -47,7 +47,7 @@ const Forums = () => {
     formData.append("avatar", file);
 
     const response = await axios.post(
-      "http://localhost:5000/api/upload",
+      "https://alumni-student-management.onrender.com/api/upload",
       formData
     );
     const imageUrl = response.data.url;
@@ -62,12 +62,12 @@ const Forums = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const author = user.name;
     const avatar = user.avatar
-      ? `http://localhost:5000${user.avatar}`
+      ? `https://alumni-student-management.onrender.com${user.avatar}`
       : "/default-avatar.png";
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/manageforum",
+        "https://alumni-student-management.onrender.com/api/manageforum",
         {
           title: newTopic.topic,
           description: newTopic.description,

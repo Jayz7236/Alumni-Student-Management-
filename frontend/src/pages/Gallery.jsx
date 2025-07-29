@@ -20,7 +20,7 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/gallery")
+    fetch("https://alumni-student-management.onrender.com/api/gallery")
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -29,7 +29,7 @@ const Gallery = () => {
               photo.uploaderAvatar &&
               !photo.uploaderAvatar.startsWith("http")
             ) {
-              photo.uploaderAvatar = `http://localhost:5000${photo.uploaderAvatar}`;
+              photo.uploaderAvatar = `https://alumni-student-management.onrender.com${photo.uploaderAvatar}`;
             }
             return photo;
           });
@@ -62,7 +62,7 @@ const Gallery = () => {
       formData.append("uploader", user._id || user.id);
       formData.append("uploaderName", user.name || "Unknown");
       try {
-        const res = await fetch("http://localhost:5000/api/gallery", {
+        const res = await fetch("https://alumni-student-management.onrender.com/api/gallery", {
           method: "POST",
           body: formData,
         });
@@ -139,11 +139,11 @@ const Gallery = () => {
                 className="bg-white border rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 cursor-pointer "
               >
                 <img
-                  src={`http://localhost:5000${photo.imageUrl}`}
+                  src={`https://alumni-student-management.onrender.com${photo.imageUrl}`}
                   alt={photo.description || "Alumni Photo"}
                   className="w-full h-56 object-cover rounded-t-md"
                   onClick={() =>
-                    setSelectedImage(`http://localhost:5000${photo.imageUrl}`)
+                    setSelectedImage(`https://alumni-student-management.onrender.com${photo.imageUrl}`)
                   }
                   onError={(e) => (e.target.src = "/images/university.jpg")}
                 />

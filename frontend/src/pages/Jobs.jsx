@@ -19,7 +19,7 @@ const Jobs = () => {
   // Fetch jobs using Axios with a callback function
   const fetchJobs = async (callback) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/job");
+      const response = await axios.get("https://alumni-student-management.onrender.com/api/job");
       setJobs(response.data);
       if (callback) callback(response.data); // Callback after successful fetch
     } catch (err) {

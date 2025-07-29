@@ -35,7 +35,7 @@ npm install axios
 
 
 3. Create a .env file with:
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=https://alumni-student-management.onrender.com/api
 
 4. Run the development server:
 npm run dev

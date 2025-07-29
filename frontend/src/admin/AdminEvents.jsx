@@ -27,7 +27,7 @@ const AdminEvents = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/events");
+      const res = await fetch("https://alumni-student-management.onrender.com/api/events");
       const data = await res.json();
       if (Array.isArray(data)) {
         setEvents(data);
@@ -67,7 +67,7 @@ const AdminEvents = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/events/add-event",
+        "https://alumni-student-management.onrender.com/api/events/add-event",
         {
           method: "POST",
           body: formData,
@@ -97,7 +97,7 @@ const AdminEvents = () => {
     if (!window.confirm("Are you sure you want to delete this event?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/events/${eventId}`, {
+      const res = await fetch(`https://alumni-student-management.onrender.com/api/events/${eventId}`, {
         method: "DELETE",
       });
 
@@ -115,7 +115,7 @@ const AdminEvents = () => {
   const fetchAttendees = async (eventId) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/events/${eventId}/attendees`,
+        `https://alumni-student-management.onrender.com/api/events/${eventId}/attendees`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -241,7 +241,7 @@ const AdminEvents = () => {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: event.image
-                    ? `url(http://localhost:5000${event.image})`
+                    ? `url(https://alumni-student-management.onrender.com${event.image})`
                     : "url('/images/university.jpg')",
                 }}
               ></div>

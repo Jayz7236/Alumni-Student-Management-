@@ -20,7 +20,7 @@
 
 //     useEffect(() => {
 //         if (topic) {
-//             axios.post('http://localhost:5000/api/topiccomments', { topic_id: topic.id })
+//             axios.post('https://alumni-student-management.onrender.com/api/topiccomments', { topic_id: topic.id })
 //                 .then(response => {
 //                     setComments(response.data);
 //                     console.log(comments);
@@ -36,7 +36,7 @@
 
 //     const handleSave = async (id) => {
 //         try {
-//             const response = await axios.put(`http://localhost:5000/api/view_forum/${id}`, {
+//             const response = await axios.put(`https://alumni-student-management.onrender.com/api/view_forum/${id}`, {
 //                 comment: newComment
 //             });
 //             setComments(prevComments => {
@@ -56,7 +56,7 @@
 
 //     const handleDelete = async (id) => {
 //         try {
-//             const response = await axios.delete(`http://localhost:5000/api/view_forum/${id}`);
+//             const response = await axios.delete(`https://alumni-student-management.onrender.com/api/view_forum/${id}`);
 //             setComments(comments.filter(c => c.id !== id));
 //         } catch (error) {
 //             console.error('Error:', error);
@@ -68,7 +68,7 @@
 //         const userid = localStorage.getItem("user_id");
 //         const username = localStorage.getItem("user_name");
 //         try {
-//             const response = await axios.post('http://localhost:5000/api/view_forum', {
+//             const response = await axios.post('https://alumni-student-management.onrender.com/api/view_forum', {
 //                 c: newComment,
 //                 user_id: userid,
 //                 topic_id: topic.id

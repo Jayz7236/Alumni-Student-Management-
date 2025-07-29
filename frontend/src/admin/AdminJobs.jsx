@@ -6,7 +6,7 @@ import JobForm from "../components/JobForm";
 import { Plus } from "lucide-react";
 // Fetch jobs from the API
 const fetchJobs = async () => {
-  const response = await fetch("http://localhost:5000/api/job");
+  const response = await fetch("https://alumni-student-management.onrender.com/api/job");
   return response.json();
 };
 
@@ -98,8 +98,8 @@ const AdminJobs = () => {
 
     try {
       const url = isEditJob
-        ? `http://localhost:5000/api/jobs/${formData._id}`
-        : "http://localhost:5000/api/job";
+        ? `https://alumni-student-management.onrender.com/api/jobs/${formData._id}`
+        : "https://alumni-student-management.onrender.com/api/job";
       const method = isEditJob ? "PUT" : "POST";
 
       const response = await fetch(url, {
@@ -148,7 +148,7 @@ const AdminJobs = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/job/${jobId}`, {
+      const response = await fetch(`https://alumni-student-management.onrender.com/api/job/${jobId}`, {
         method: "DELETE",
       });
 

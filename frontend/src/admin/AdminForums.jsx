@@ -32,7 +32,7 @@ const AdminForums = () => {
 
   const fetchForums = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/forums");
+      const response = await axios.get("https://alumni-student-management.onrender.com/api/forums");
       const formatted = response.data.map((forum) => ({
         id: forum._id,
         title: forum.title,
@@ -47,7 +47,7 @@ const AdminForums = () => {
 
   const approveForum = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/forum/status/${id}`, {
+      await axios.put(`https://alumni-student-management.onrender.com/api/forum/status/${id}`, {
         status: "Approved",
       });
       fetchForums();
@@ -58,7 +58,7 @@ const AdminForums = () => {
 
   const deleteForum = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/forum/${id}`);
+      await axios.delete(`https://alumni-student-management.onrender.com/api/forum/${id}`);
       fetchForums();
     } catch (err) {
       console.error("Error deleting forum:", err);
@@ -93,7 +93,7 @@ const AdminForums = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.post(
-          "http://localhost:5000/api/manageforum",
+          "https://alumni-student-management.onrender.com/api/manageforum",
           {
             title: newTopic.topic,
             description: newTopic.description,

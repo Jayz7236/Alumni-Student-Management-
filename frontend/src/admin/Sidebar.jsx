@@ -21,7 +21,7 @@ const Sidebar = () => {
         }
 
         const res = await axios.get(
-          `http://localhost:5000/api/users/admin/${adminId}`,
+          `https://alumni-student-management.onrender.com/api/users/admin/${adminId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -32,8 +32,8 @@ const Sidebar = () => {
           name: res.data.name || "Admin Name",
           email: res.data.email || "admin@example.com",
           avatar: res.data.avatar
-            ? `http://localhost:5000${res.data.avatar}`
-            : `http://localhost:5000/uploads/1742742024090-112.png`,
+            ? `https://alumni-student-management.onrender.com${res.data.avatar}`
+            : `https://alumni-student-management.onrender.com/uploads/1742742024090-112.png`,
         });
 
         // ✅ Store in LocalStorage (for sidebar persistence)

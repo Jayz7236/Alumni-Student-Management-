@@ -17,13 +17,13 @@ const Alumni = () => {
   useEffect(() => {
     const fetchAlumni = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/alumni`);
+        const response = await fetch(`https://alumni-student-management.onrender.com/api/alumni`);
         if (!response.ok) throw new Error("Failed to fetch alumni data.");
         const data = await response.json();
 
         data.forEach((alumnus) => {
           if (alumnus.avatar && !alumnus.avatar.startsWith("http")) {
-            alumnus.avatar = `http://localhost:5000${alumnus.avatar}`;
+            alumnus.avatar = `https://alumni-student-management.onrender.com${alumnus.avatar}`;
           }
         });
         setAlumni(data);

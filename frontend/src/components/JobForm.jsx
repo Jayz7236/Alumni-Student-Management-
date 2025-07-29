@@ -58,7 +58,7 @@ const JobForm = ({ onClose }) => {
 
     try {
       // Post the job to the server
-      const response = await axios.post("http://localhost:5000/api/job", jobPayload);
+      const response = await axios.post("https://alumni-student-management.onrender.com/api/job", jobPayload);
 
       // Handle the response
       if (response.status === 201) {

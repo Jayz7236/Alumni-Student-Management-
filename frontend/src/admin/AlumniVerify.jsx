@@ -11,7 +11,7 @@ const AlumniVerify = () => {
     // Fetch alumni details
     const fetchAlumni = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/users/${id}`);
+        const response = await fetch(`https://alumni-student-management.onrender.com/api/users/${id}`);
         if (!response.ok) throw new Error("Failed to fetch alumni data");
         const data = await response.json();
 
@@ -20,7 +20,7 @@ const AlumniVerify = () => {
 
         // Ensure the avatar path is correct (prepend base URL if it's a relative path)
         if (data.avatar && !data.avatar.startsWith("http")) {
-          data.avatar = `http://localhost:5000${data.avatar}`; // Prepend the base URL
+          data.avatar = `https://alumni-student-management.onrender.com${data.avatar}`; // Prepend the base URL
         }
         console.log("Avatar Path: ", data.avatar); // Log to verify the avatar URL
 
@@ -37,7 +37,7 @@ const AlumniVerify = () => {
 
   const approveAlumni = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/alumni/${id}/approve`, {
+      const response = await fetch(`https://alumni-student-management.onrender.com/api/alumni/${id}/approve`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
       });
@@ -63,7 +63,7 @@ const AlumniVerify = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/alumni/${id}`, {
+      const response = await fetch(`https://alumni-student-management.onrender.com/api/alumni/${id}`, {
         method: "DELETE",
       });
 

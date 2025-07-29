@@ -16,7 +16,7 @@ const AdminGallery = () => {
 
     if (userId && token) {
       axios
-        .get(`http://localhost:5000/api/users/admin/${userId}`, {
+        .get(`https://alumni-student-management.onrender.com/api/users/admin/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -34,7 +34,7 @@ const AdminGallery = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/gallery")
+      .get("https://alumni-student-management.onrender.com/api/gallery")
       .then((res) => {
         if (Array.isArray(res.data)) {
           setGallery(res.data);
@@ -77,7 +77,7 @@ const AdminGallery = () => {
       // If editId is set, use PUT to update the existing gallery item, else use POST for new gallery item
       const response = await axios({
         method: editId ? "PUT" : "POST", // Change to PUT when editing an existing gallery item
-        url: `http://localhost:5000/api/gallery${editId ? `/${editId}` : ""}`, // Add editId if available
+        url: `https://alumni-student-management.onrender.com/api/gallery${editId ? `/${editId}` : ""}`, // Add editId if available
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -112,7 +112,7 @@ const AdminGallery = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/gallery/${id}`
+        `https://alumni-student-management.onrender.com/api/gallery/${id}`
       );
       setGallery(gallery.filter((item) => item._id !== id));
       alert(response.data.message || "Deleted successfully");
@@ -226,7 +226,7 @@ const AdminGallery = () => {
                     </td>
                     <td className="flex justify-center px-4 py-2 border border-gray-300">
                       <img
-                        src={`http://localhost:5000${galleryItem.imageUrl}`}
+                        src={`https://alumni-student-management.onrender.com${galleryItem.imageUrl}`}
                         alt="img"
                         className="h-15 w-15 object-cover rounded"
                       />

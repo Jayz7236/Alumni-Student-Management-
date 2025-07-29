@@ -22,13 +22,13 @@ const CommonProfile = () => {
   useEffect(() => {
     const fetchAlumnus = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/users/${id}`);
+        const response = await fetch(`https://alumni-student-management.onrender.com/api/users/${id}`);
         if (!response.ok) throw new Error("Alumnus not found");
         const data = await response.json();
 
        
         const avatarUrl = data.avatar && !data.avatar.startsWith("http")
-          ? `http://localhost:5000${data.avatar}`
+          ? `https://alumni-student-management.onrender.com${data.avatar}`
           : data.avatar;
 
         setAlumnus({ ...data, avatar: avatarUrl }); // Set alumnus with updated avatar

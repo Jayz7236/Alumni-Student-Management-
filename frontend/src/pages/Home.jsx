@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/events");
+        const res = await axios.get("https://alumni-student-management.onrender.com/api/events");
         const today = new Date();
 
         const filtered = res.data.filter(
@@ -172,7 +172,7 @@ const Home = () => {
                   <img
                     src={
                       event.image
-                        ? `http://localhost:5000${event.image}`
+                        ? `https://alumni-student-management.onrender.com${event.image}`
                         : "/images/university.jpg"
                     }
                     alt={event.name}

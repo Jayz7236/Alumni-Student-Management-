@@ -11,7 +11,7 @@ const EventCard = ({ event, userId, activeTab, onJoin, onClick }) => {
       <img
         src={
           event.image
-            ? `http://localhost:5000${event.image}`
+            ? `https://alumni-student-management.onrender.com${event.image}`
             : "/images/university.jpg"
         }
         alt={event.name}

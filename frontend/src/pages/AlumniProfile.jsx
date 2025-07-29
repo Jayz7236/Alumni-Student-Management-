@@ -74,7 +74,7 @@ const AlumniProfile = () => {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/users/${id}`);
+      const res = await axios.get(`https://alumni-student-management.onrender.com/api/users/${id}`);
       setAlumni({
         ...res.data,
         graduationYear: res.data.graduationYear || "",
@@ -89,7 +89,7 @@ const AlumniProfile = () => {
   const fetchJoinedEvents = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/events/joined-events/${id}`
+        `https://alumni-student-management.onrender.com/api/events/joined-events/${id}`
       );
       setJoinedEvents(
         (response.data || [])
@@ -104,7 +104,7 @@ const AlumniProfile = () => {
     try {
       // Fetch the user and their jobs at the same time
       const res = await axios.get(
-        `http://localhost:5000/api/job/profile/${id}`
+        `https://alumni-student-management.onrender.com/api/job/profile/${id}`
       );
       setAlumni(res.data.user); // Set the alumni profile data
       setJobs(res.data.jobs); // Set the posted jobs data
@@ -116,7 +116,7 @@ const AlumniProfile = () => {
     try {
       console.log("Gallery Item ID:", id);
       const response = await axios.get(
-        `http://localhost:5000/api/gallery/${id}`
+        `https://alumni-student-management.onrender.com/api/gallery/${id}`
       );
       console.log("Gallery Response:", response.data);
       setGalleryItems(response.data);
@@ -126,7 +126,7 @@ const AlumniProfile = () => {
   };
   const fetchUserTopics = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/forum/user/${id}`);
+      const res = await axios.get(`https://alumni-student-management.onrender.com/api/forum/user/${id}`);
       setUserTopics(res.data || []); // Set topics created by the user
     } catch (error) {
       console.error("Error fetching user topics:", error);
@@ -136,7 +136,7 @@ const AlumniProfile = () => {
   const fetchUserComments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/comment/user/${id}`
+        `https://alumni-student-management.onrender.com/api/comment/user/${id}`
       );
       console.log("Fetched comments:", res.data);
       setUserComments(res.data || []); // Set comments made by the user
@@ -164,7 +164,7 @@ const AlumniProfile = () => {
         alert("You must be logged in to leave an event.");
         return;
       }
-      await axios.delete(`http://localhost:5000/api/events/leave/${eventId}`, {
+      await axios.delete(`https://alumni-student-management.onrender.com/api/events/leave/${eventId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchJoinedEvents(); // Refresh the list of joined events
@@ -180,7 +180,7 @@ const AlumniProfile = () => {
   };
   const deleteJob = async (jobId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/job/${jobId}`);
+      await axios.delete(`https://alumni-student-management.onrender.com/api/job/${jobId}`);
       alert("Job deleted successfully!");
       fetchJobs(); // Re-fetch the jobs after deletion
     } catch (error) {
@@ -193,7 +193,7 @@ const AlumniProfile = () => {
     setEditItem(item);
     setEditPhoto({
       imageFile: null,
-      previewUrl: `http://localhost:5000${item.imageUrl}`,
+      previewUrl: `https://alumni-student-management.onrender.com${item.imageUrl}`,
       description: item.description,
     });
   };
@@ -209,7 +209,7 @@ const AlumniProfile = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/gallery/${editItem._id}`,
+        `https://alumni-student-management.onrender.com/api/gallery/${editItem._id}`,
         {
           method: "PUT",
           body: formData,
@@ -232,7 +232,7 @@ const AlumniProfile = () => {
   const deleteGalleryItem = async (imageId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/api/gallery/${imageId}`
+        `https://alumni-student-management.onrender.com/api/gallery/${imageId}`
       );
       console.log(res.data.message);
       fetchGalleryItem();
@@ -247,7 +247,7 @@ const AlumniProfile = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/view_forum/${commentId}`);
+      await axios.delete(`https://alumni-student-management.onrender.com/api/view_forum/${commentId}`);
       fetchUserComments(); // After delete, refetch comments
     } catch (error) {
       console.error("Error deleting comment:", error);
@@ -258,7 +258,7 @@ const AlumniProfile = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/forum/${topicId}`,
+        `https://alumni-student-management.onrender.com/api/forum/${topicId}`,
         {
           method: "DELETE",
         }
@@ -358,7 +358,7 @@ const AlumniProfile = () => {
     formData.append("avatar", file);
     try {
       await axios.put(
-        `http://localhost:5000/api/users/${id}/avatar`,
+        `https://alumni-student-management.onrender.com/api/users/${id}/avatar`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -375,7 +375,7 @@ const AlumniProfile = () => {
     try {
       const updateData = { ...alumni };
       if (!selectedFile) delete updateData.avatar;
-      await axios.put(`http://localhost:5000/api/users/${id}`, updateData, {
+      await axios.put(`https://alumni-student-management.onrender.com/api/users/${id}`, updateData, {
         headers: { "Content-Type": "application/json" },
       });
       alert("Profile updated successfully!");
@@ -480,7 +480,7 @@ const AlumniProfile = () => {
               <img
                 src={
                   alumni.avatar
-                    ? `http://localhost:5000${alumni.avatar}`
+                    ? `https://alumni-student-management.onrender.com${alumni.avatar}`
                     : "default-avatar.png"
                 }
                 alt="Profile"
@@ -673,7 +673,7 @@ const AlumniProfile = () => {
                       className="gallery-item bg-white p-4 rounded-lg shadow-md"
                     >
                       <img
-                        src={`http://localhost:5000${item.imageUrl}`}
+                        src={`https://alumni-student-management.onrender.com${item.imageUrl}`}
                         alt={item.description || "Gallery Item"}
                         className="w-full h-40 object-cover rounded-lg mb-4"
                         onClick={() => setSelectedImage(item)} // Set selected image on click
@@ -718,7 +718,7 @@ const AlumniProfile = () => {
                   ✖
                 </button>
                 <img
-                  src={`http://localhost:5000${selectedImage.imageUrl}`} // Use selectedImage instead of item
+                  src={`https://alumni-student-management.onrender.com${selectedImage.imageUrl}`} // Use selectedImage instead of item
                   alt={selectedImage.description || "Gallery Item"}
                   className="w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
                 />

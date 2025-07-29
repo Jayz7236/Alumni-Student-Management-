@@ -17,14 +17,14 @@ const Discussion = () => {
   const fetchDiscussion = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/forums/${id}`
+        `https://alumni-student-management.onrender.com/api/forums/${id}`
       );
       const formattedTopic = {
         ...response.data,
         author: response.data.created_by || "Unknown",
         avatar: response.data.creator_avatar?.startsWith("http")
           ? response.data.creator_avatar
-          : `http://localhost:5000${response.data.creator_avatar}`,
+          : `https://alumni-student-management.onrender.com${response.data.creator_avatar}`,
       };
       setTopic(formattedTopic);
     } catch (err) {
@@ -35,7 +35,7 @@ const Discussion = () => {
   const fetchComments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/forums/${id}/comments`
+        `https://alumni-student-management.onrender.com/api/forums/${id}/comments`
       );
 
       const formattedComments = res.data.map((comment) => ({
@@ -82,7 +82,7 @@ const Discussion = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/reply",
+        "https://alumni-student-management.onrender.com/api/reply",
         {
           comment: newComment,
           topic_id: id,
@@ -116,7 +116,7 @@ const Discussion = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/reply",
+        "https://alumni-student-management.onrender.com/api/reply",
         {
           comment: childReply,
           topic_id: id,
@@ -158,7 +158,7 @@ const Discussion = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/view_forum/${commentId}`,
+        `https://alumni-student-management.onrender.com/api/view_forum/${commentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

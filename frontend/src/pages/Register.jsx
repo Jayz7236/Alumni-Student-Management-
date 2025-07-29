@@ -96,7 +96,7 @@ const Register = () => {
     if (!validateForm()) return;
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData, {
+      await axios.post("https://alumni-student-management.onrender.com/api/auth/register", formData, {
         withCredentials: true,
       });
       alert("Registration successful! Awaiting admin approval.");

@@ -13,7 +13,7 @@ const StudentVerify = () => {
     // Fetch student data
     const fetchStudent = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/users/${id}`);
+        const response = await fetch(`https://alumni-student-management.onrender.com/api/users/${id}`);
         if (!response.ok) {
           throw new Error("Student not found");
         }
@@ -21,7 +21,7 @@ const StudentVerify = () => {
 
         // Ensure the avatar path is correct (prepend base URL if it's a relative path)
         if (data.avatar && !data.avatar.startsWith("http")) {
-          data.avatar = `http://localhost:5000${data.avatar}`; // Prepend the base URL
+          data.avatar = `https://alumni-student-management.onrender.com${data.avatar}`; // Prepend the base URL
         }
 
         setStudent(data);
@@ -38,7 +38,7 @@ const StudentVerify = () => {
   // Approve Student
   const approveStudent = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/students/${id}/approve`, {
+      const response = await fetch(`https://alumni-student-management.onrender.com/api/students/${id}/approve`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
       });
@@ -60,7 +60,7 @@ const StudentVerify = () => {
     if (!window.confirm("Are you sure you want to delete this student?")) return;
   
     try {
-      const response = await fetch(`http://localhost:5000/api/students/${id}`, {
+      const response = await fetch(`https://alumni-student-management.onrender.com/api/students/${id}`, {
         method: "DELETE",
       });
   

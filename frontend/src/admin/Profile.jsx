@@ -20,7 +20,7 @@ const Profile = () => {
       }
 
       const res = await axios.get(
-        `http://localhost:5000/api/users/admin/${adminId}`,
+        `https://alumni-student-management.onrender.com/api/users/admin/${adminId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -58,7 +58,7 @@ const Profile = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/users/admin/${adminId}/avatar`,
+        `https://alumni-student-management.onrender.com/api/users/admin/${adminId}/avatar`,
         formData,
         {
           headers: {
@@ -93,7 +93,7 @@ const Profile = () => {
       if (password) formData.append("password", password);
 
       const res = await axios.put(
-        `http://localhost:5000/api/users/admin/${adminId}`,
+        `https://alumni-student-management.onrender.com/api/users/admin/${adminId}`,
         formData,
         {
           headers: {
@@ -131,7 +131,7 @@ const Profile = () => {
                 <img
                   src={
                     admin.avatar
-                      ? `http://localhost:5000${admin.avatar}`
+                      ? `https://alumni-student-management.onrender.com${admin.avatar}`
                       : "default-avatar.png"
                   }
                   alt="Profile"

@@ -10,7 +10,7 @@ const AlumniList = () => {
   useEffect(() => {
     const fetchAlumni = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/alumni/");
+        const response = await fetch("https://alumni-student-management.onrender.com/api/alumni/");
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

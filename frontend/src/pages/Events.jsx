@@ -15,7 +15,7 @@ const Events = () => {
   //  Fetch Events from Backend
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/events")
+      .get("https://alumni-student-management.onrender.com/api/events")
       .then(({ data }) => setEvents(data))
       .catch((error) => console.error("Error fetching events:", error));
   }, []);
@@ -28,7 +28,7 @@ const Events = () => {
       if (!token) return alert("Please login to join the event!");
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/events/join",
+        "https://alumni-student-management.onrender.com/api/events/join",
         { eventId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
