@@ -22,8 +22,10 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173", // for development
-  "https://alumni-student-management.vercel.app/" // replace with your actual Vercel domain
+  "https://alumni-student-management.vercel.app/", // replace with your actual Vercel domain
+  "https://alumni-student-management.onrender.com"
 ];
+
 
 app.use(cors({
   origin: function (origin, callback) {
